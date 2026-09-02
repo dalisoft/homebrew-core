@@ -41,6 +41,8 @@ class Nmap < Formula
 
   conflicts_with "cern-ndiff", "ndiff", because: "both install `ndiff` binaries"
 
+  deny_network_access!
+
   def install
     # Fix to missing VERSION file
     # https://github.com/nmap/nmap/pull/3111
