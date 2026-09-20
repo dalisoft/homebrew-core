@@ -23,6 +23,8 @@ class X265 < Formula
     depends_on "nasm" => :build
   end
 
+  deny_network_access!
+
   def install
     ENV.runtime_cpu_detection
     # Build based off the script at ./build/linux/multilib.sh
