@@ -21,6 +21,12 @@ class Tombi < Formula
 
   depends_on "rust" => :build
 
+  deny_network_access!
+
+  def fetch
+    system "cargo", "fetch", "--locked", "--target", "host-tuple", "--manifest-path", "rust/tombi-cli/Cargo.toml"
+  end
+
   def install
     ENV["TOMBI_VERSION"] = version.to_s
     system "cargo", "xtask", "set-version"
