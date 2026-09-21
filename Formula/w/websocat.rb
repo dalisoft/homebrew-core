@@ -27,6 +27,12 @@ class Websocat < Formula
     depends_on "openssl@3"
   end
 
+  deny_network_access!
+
+  def fetch
+    system "cargo", "fetch", "--locked", "--target", "host-tuple"
+  end
+
   def install
     system "cargo", "install", *std_cargo_args(features: "ssl")
   end
